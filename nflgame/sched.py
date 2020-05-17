@@ -81,14 +81,14 @@ def _create_schedule(jsonf=None):
             missing_weeks = check_missing_weeks(sched, year, phase)
             weeks_to_update = order_weeks_to_update(missing_weeks, current_week)
 
-            for week_to_update in weeks_to_update:
-                print(('Updating {}').format(week_to_update))
-                year, phase, week = week_to_update
-                week_was_updated = nflgame.update_sched.update_week(sched, year, phase, week)
-                if not week_was_updated:
-                    print(("Week {}{} of {} was either empty, or it couldn't be fetched from NFL.com. Aborting.")\
-                        .format(phase , week, year))
-                    break
+            # for week_to_update in weeks_to_update:
+            #     print(('Updating {}').format(week_to_update))
+            #     year, phase, week = week_to_update
+            #     week_was_updated = nflgame.update_sched.update_week(sched, year, phase, week)
+            #     if not week_was_updated:
+            #         print(("Week {}{} of {} was either empty, or it couldn't be fetched from NFL.com. Aborting.")\
+            #             .format(phase , week, year))
+            #         break
 
             nflgame.update_sched.write_schedule(jsonf, sched)
             last_updated = datetime.datetime.utcnow()
